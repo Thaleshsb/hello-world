@@ -1,4 +1,5 @@
-function w2n(numero = process.argv[2]) {
+//function w2n(numero = process.argv[2]) {
+   numero = process.argv[2]
    const numerais = {
       'e':0, 'menos': -1, 'pi':3.14,'pis':3.14,'de':0,'porcento':1/100,'percentual':1/100,'porcentagem':1/100,'percentagem':1/100,'ponto':'.','negativos':-1,'negativo':-1,'virgula':'.',
       'zero': 0, 'zeros': 0,
@@ -297,9 +298,12 @@ function w2n(numero = process.argv[2]) {
       // operações com pi
       if(pacotex[meral] == 3.14 ){
          if(somatoriopadrão == 3.14){
-            somatoriopadrão = 4.14
+            somatoriopadrão = 3.14
          }
-         somatoriopadrão = (somatoriopadrão-pacotex[meral]) * pacotex[meral] 
+        else{
+          somatoriopadrão -= pacotex[meral]
+          somatoriopadrão = (somatoriopadrão * pacotex[meral])
+        }
       }
       // operações fracionarias
       
@@ -345,6 +349,14 @@ function w2n(numero = process.argv[2]) {
                   
                }
             }
+            if(caixotex.indexOf('meio') == -1){
+               if(caixotex.indexOf('meia') == -1){
+                  if(caixotex.length < 3){
+                  somatoriopadrão  -= pacotex[meral-1]
+                  somatoriopadrão += (pacotex[meral-1] * pacotex[meral]) 
+                  }
+               }
+            }
          }
       }
       // zeros no fim zeram tudo afinal 'um milhão de zeros' é 'zero'
@@ -386,11 +398,13 @@ function w2n(numero = process.argv[2]) {
    // aqui abaixo sai o resultado
 
    if(stringnum.toString().length == 8){
-      return stringnum;
+      console.log(stringnum)
+      //return stringnum;
    }
    if(stringnum.toString().length != 8){
-      return somatorio;
+      console.log(somatorio)
+      //return somatorio;
    }
-}
-w2n()
-module.exports = { w2n }
+//}
+//w2n()
+//module.exports = { w2n }
